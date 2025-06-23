@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h3>Pet Manager 3000</h3>
+
+    <div class="mb-3 d-flex align-items-center">
+        <label class="me-2 mb-0">Dog Name: </label>
+        <input type="text" [(ngModel)]="newPetName" name="newPetName" class="form-control me-2" placeholder="Enter Dog Name">
+        <button class="btn btn-primary" (click)="addPet()">Add Pet</button>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <h5>Listed</h5>
+            @for (pet of getPetsByStatus('listed'); track $index) {
+                <div class="pet-card">
+                    <span>{{ pet.name }}</span>
+                    <button class="btn btn-sm btn-outline-secondary" (click)="nextStatus(pet)">Next</button>
+                </div>
+                }
+        </div>
+
+        <div class="col">
+            <h5>Examining</h5>
+            @for (pet  of getPetsByStatus('examining'); track $index) {
+                <div class="pet-card">
+                    <span>{{ pet.name }}</span>
+                    <button class="btn btn-sm btn-outline-secondary" (click)="nextStatus(pet)">Next</button>
+                </div>
+                }
+        </div>
+
+        <div class="col">
+            <h5>Finally back to hooman</h5>
+            @for (pet of getPetsByStatus('finally_back_to_hooman'); track $index) {
+                <div class="pet-card">
+                    <span>{{ pet.name }}</span>
+                </div>
+                }
+        </div>
+    </div>
+</div>
